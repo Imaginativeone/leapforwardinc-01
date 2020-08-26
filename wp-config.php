@@ -42,6 +42,8 @@ if (strstr($_SERVER['SERVER_NAME'], 'leapforward01.local')) {
 
 } else {
 
+	// leapforwardinc-01.imaginativedata.com
+	// These settings appear to be correct
 	define( 'DB_NAME', 'imagin42_wp582' );
 
 	/** MySQL database username */
@@ -86,9 +88,6 @@ define('NONCE_SALT',       'yn67pMFc5wr+BHn68qBm8CtWdyBS2m3O+aTiFVLA0qDUlrUwRw6l
  * a unique prefix. Only numbers, letters, and underscores please!
  */
 $table_prefix = 'wp_';
-
-
-
 
 /* That's all, stop editing! Happy publishing. */
 
