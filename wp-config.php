@@ -43,7 +43,6 @@ if (strstr($_SERVER['SERVER_NAME'], 'leapforward01.local')) {
 } else {
 
 	// leapforwardinc-01.imaginativedata.com
-	// These settings appear to be correct
 	define( 'DB_NAME', 'imagin42_wp582' );
 
 	/** MySQL database username */
