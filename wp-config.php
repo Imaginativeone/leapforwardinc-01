@@ -42,14 +42,13 @@ if (strstr($_SERVER['SERVER_NAME'], 'leapforward01.local')) {
 
 } else {
 
-	// leapforwardinc-01.imaginativedata.com
-	define( 'DB_NAME', 'imagin42_wp582' );
+	define( 'DB_NAME', 'imagin42_wp277' );
 
 	/** MySQL database username */
-	define( 'DB_USER', 'imagin42_wp582' );
+	define( 'DB_USER', 'imagin42_wp277' );
 
 	/** MySQL database password */
-	define( 'DB_PASSWORD', ']Sp93c74v[' );
+	define( 'DB_PASSWORD', '4(59SPg2[p' );
 
 	/** MySQL hostname */
 	define( 'DB_HOST', 'localhost' );
