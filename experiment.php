@@ -3,6 +3,6 @@
     $myname = 'Doug';
 ?>
 
-<h1>This page is all about blank</h1>
+<h1>This page is all about <? echo $myname ?></h1>
 <?php echo 5 * 5 ?>
-<h2>All About Blank</h2>
+<h2>All About <? echo $myname ?></h2>
