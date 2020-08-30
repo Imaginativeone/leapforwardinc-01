@@ -1,21 +1,13 @@
 <?php 
+  $names = array('Doug', 'Aline', 'Dubhe', 'Gilberto');
 
-  function myFirstFunction($parameter, $secondParameter) {
-    echo $parameter, ' The answer is: ', $secondParameter*$secondParameter;
+  $count = 0;
+  while($count < count($names)) {
+    echo "<li>Hi, my name is $names[$count]</li>";
+    $count++;
   }
 
-  function greet($name, $favoriteColor) {
-    echo "<p>Hi, my name is $name and my favorite color is $favoriteColor.</p>";
-  }
-
-  $argument = 'Hello';
-  $secondArgument = 7;
-
-  myFirstFunction($argument, $secondArgument);
-
-  greet('John', 'Blue');
-  greet('Jane', 'Green');
 ?>
 
-<h1><?php bloginfo('name') ?></h1>
-<p><?php bloginfo('description') ?></p>
+<!-- HTML Mode -->
+<p>Hi, my name is <?php echo $names[0]; ?></p>
