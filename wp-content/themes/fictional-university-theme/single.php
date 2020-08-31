@@ -1,5 +1,8 @@
 <!-- This is the fallback page for individual POSTS (Not Pages) -->
 <?php 
+
+get_header();
+
   while(have_posts()) { // Famous WordPress Loop!
     the_post(); ?>
 
@@ -9,5 +12,9 @@
     <div><?php the_content()?></div>
     <!-- Exit HTML Mode -->
 
-  <?php }
+  <?php 
+  }
+
+  get_footer();
+
 ?>
