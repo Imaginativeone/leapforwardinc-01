@@ -1,3 +1,4 @@
+<!-- This is the fallback page for individual POSTS (Not Pages) -->
 <?php 
   while(have_posts()) { // Famous WordPress Loop!
     the_post(); ?>
