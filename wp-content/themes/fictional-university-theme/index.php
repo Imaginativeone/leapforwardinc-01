@@ -12,4 +12,6 @@
     <!-- Exit HTML Mode -->
 
   <?php }
+
+  get_footer();
 ?>
