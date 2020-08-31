@@ -1,4 +1,7 @@
+<!-- This code pulls in the contents of header.php -->
 <?php 
+  get_header();
+
   while(have_posts()) { // Famous WordPress Loop!
     the_post(); ?>
 
