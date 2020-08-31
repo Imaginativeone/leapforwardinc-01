@@ -6,5 +6,4 @@
   </head>
   <body>
     <h1>Fictional University</h1>
-  </body>
-</html>
+    <!-- </body> and </html> moved to footer.php -->
