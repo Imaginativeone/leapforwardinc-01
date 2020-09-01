@@ -23,9 +23,11 @@
 
       <!-- If the current page has a parent page -->
       <?php
-        echo get_the_ID();
-        echo " | ";
-        echo wp_get_post_parent_ID(get_the_ID());
+        if (wp_get_post_parent_ID(get_the_ID())) {
+          echo "I am a child page.";
+        } else {
+          echo "I am a parent page.";
+        }
       ?>
       <!-- Breadcrumb Box -->
       <div class="metabox metabox--position-up metabox--with-home-link">
