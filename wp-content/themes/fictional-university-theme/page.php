@@ -24,21 +24,22 @@
       <!-- If the current page has a parent page -->
       <?php
         if (wp_get_post_parent_ID(get_the_ID())) {
-          echo "I am a child page.";
+          echo "I am a child page."; ?>
+          <!-- Breadcrumb Box -->
+          <div class="metabox metabox--position-up metabox--with-home-link">
+            <p>
+              <a class="metabox__blog-home-link" href="#">
+                <i class="fa fa-home" aria-hidden="true"></i> Back to About Us
+              </a>
+              <!-- See functions.php -->
+              <span class="metabox__main"><?php the_title(); ?></span>
+            </p>
+          </div>
+          <?php
         } else {
-          echo "I am a parent page.";
+          // echo "I am a parent page.";
         }
       ?>
-      <!-- Breadcrumb Box -->
-      <div class="metabox metabox--position-up metabox--with-home-link">
-        <p>
-          <a class="metabox__blog-home-link" href="#">
-            <i class="fa fa-home" aria-hidden="true"></i> Back to About Us
-          </a>
-          <!-- See functions.php -->
-          <span class="metabox__main"><?php the_title(); ?></span>
-        </p>
-      </div>
       
       <!-- Sidebar Menu -->
       <!-- <div class="page-links">
