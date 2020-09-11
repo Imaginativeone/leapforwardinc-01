@@ -1,7 +1,7 @@
 class MobileMenu {
   constructor() {
 
-    alert('Aline is a cutie. Yup');
+    // alert('Aline is a cutie. Yup');
 
     this.menu = document.querySelector(".site-header__menu")
     this.openButton = document.querySelector(".site-header__menu-trigger")
