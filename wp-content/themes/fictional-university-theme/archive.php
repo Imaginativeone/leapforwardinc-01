@@ -9,11 +9,11 @@
         <h1 class="page-banner__title">
           <?php 
             if (is_category()) {
-              echo "Category Name Will Go Here.";
+              single_cat_title();
             }
 
             if (is_author()) {
-              echo "Author Name Will Go Here.";
+              echo "Posts by "; the_author();
             }
           ?>
         </h1>
