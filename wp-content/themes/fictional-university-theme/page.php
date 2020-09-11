@@ -43,16 +43,51 @@
           // echo "I am a parent page.";
         }
       ?>
-      
-      <!-- Sidebar Menu -->
-      <div class="page-links">
-        <h2 class="page-links__title"><a href="#">About Us</a></h2>
-        <ul class="min-list">
-          <li class="current_page_item"><a href="#">Our History</a></li>
-          <li><a href="#">Our Goals</a></li>
-        </ul>
-      </div>
 
+      <!-- No Parent or Children Pages -->
+      <?php 
+
+        $testArray = get_pages(
+          array(
+            'child_of' => get_the_ID()
+          )
+        );
+
+        if ($theParent or $testArray) { ?>
+
+          <!-- Sidebar Menu -->
+          <div class="page-links">
+            <h2 class="page-links__title">
+              <!-- Parent/Child Links -->
+              <a href="<?php echo get_permalink($theParent); ?>">
+                <?php echo get_the_title($theParent); ?>
+              </a>
+            </h2>
+            <ul class="min-list">
+              <?php 
+
+                if ($theParent) {
+                  $findChildrenOf = $theParent;
+                } else {
+                  $findChildrenOf = get_the_ID();
+                }
+
+                wp_list_pages( // Needs arguments to limit the pages; otherwise shows ALL pages
+                  array(
+                    'title_li'    => NULL,
+                    'child_of'    => $findChildrenOf,
+                    'sort_column' => 'menu_order' // Can set these in admin for respective page
+                  )
+                ); 
+              ?>
+              <!-- <li class="current_page_item"><a href="#">Our History</a></li>
+              <li><a href="#">Our Goals</a></li> -->
+            </ul>
+          </div>
+
+        <? }
+      ?>
+      
       <div class="generic-content">
         <?php the_content(); ?>
       </div>
