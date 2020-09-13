@@ -36,4 +36,53 @@
   }
 
   add_action('after_setup_theme', 'university_features'); // Header Title
+
+  // See archive-event.php for info about Default Queries Adjustments
+  // $today = date('Ymd');
+
+  // Custom Query with Ordering and Sorting
+  // $homepageEvents = new WP_Query(
+  //   array(
+  //     'posts_per_page' => -1, // 2
+  //     'post_type'      => 'event',
+  //     'meta_key'       => 'event_date',
+  //     'orderby'        => 'meta_value_num', // formerly 'post_date', 'rand', meta_value !event_date
+  //     'order'          => 'ASC',
+  //     'meta_query'     => array( // eliminate non-adherents to sub-query
+  //       array(
+  //         'key' => 'event_date',
+  //         'compare' => '>=',
+  //         'value' => $today,
+  //         'type' => 'numeric'
+  //       )
+  //     )
+  //   )
+  // );
+
+  function university_adjust_queries($query) {
+
+    $today = date('Ymd');
+
+    // $query->set('posts_per_page', '1');  // Pagination is still there
+                                            // Applied Universally to all Queries! Too Powerful
+    if (!is_admin() AND is_post_type_archive('event') AND $query->is_main_query()) {
+      // $query->set('posts_per_page', '1');
+      $query->set('meta_key', 'event_date');
+      $query->set('orderby',  'meta_value_num');
+      $query->set('order',    'ASC');
+      $query->set('meta_query', 
+        array(
+          array(
+            'key' => 'event_date',
+            'compare' => '>=',
+            'value' => $today,
+            'type' => 'numeric'
+          )        
+        )
+      );
+    }
+  }
+
+  // See archive-event.php for info about Default Queries Adjustments
+  add_action('pre_get_posts', 'university_adjust_queries');
 ?>

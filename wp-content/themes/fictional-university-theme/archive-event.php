@@ -20,15 +20,26 @@ Template Page for the "Events" Custom Post Type ARCHIVE<br/>
     </div>
 
   <div class="container container--narrow page-section">
-  
+
+  <!-- See functions.php for Info on Manipulating the Default URL: pre_get_posts Hook -->
+
   <?php 
     while(have_posts()) {
       the_post(); ?>
       <!-- Beg of HTML for an Event on the Home Page -->
       <div class="event-summary">
-        <a class="event-summary__date t-center" href="<?php the_permalink(); ?>">
+        <!-- <a class="event-summary__date t-center" href="<?php the_permalink(); ?>">
           <span class="event-summary__month">Mar</span>
           <span class="event-summary__day">25</span>
+        </a> -->
+        <a class="event-summary__date t-center" href="<?php the_permalink(); ?>">
+          <span class="event-summary__month">
+            <!-- <?php the_field('event_date'); ?></span> --><!-- CPT Date -->
+            <?php 
+              $eventDate = new DateTime(get_field('event_date')); // the_field >> get_field
+              echo $eventDate->format('M');
+            ?>
+          <span class="event-summary__day"><?php echo $eventDate->format('d'); ?></span>
         </a>
         <div class="event-summary__content">
           <h5 class="event-summary__title headline headline--tiny">

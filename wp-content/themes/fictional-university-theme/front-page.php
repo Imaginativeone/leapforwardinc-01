@@ -1,4 +1,8 @@
 <?php 
+
+  echo $pagenow;
+
+
   // <!-- This code pulls in the contents of header.php -->
   get_header(); ?>
 
