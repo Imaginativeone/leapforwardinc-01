@@ -21,10 +21,14 @@
         <h2 class="headline headline--small-plus t-center">Upcoming Events</h2>
 
         <?php 
+          // Custom Query
           $homepageEvents = new WP_Query(
             array(
-              'posts_per_page' => 2,
-              'post_type' => 'event'
+              'posts_per_page' => 0, // 2
+              'post_type'      => 'event',
+              'meta_key'       => 'event_date',
+              'orderby'        => 'meta_value_num', // formerly 'post_date', 'rand', meta_value !event_date
+              'order'          => 'ASC'
             )
           );
 
