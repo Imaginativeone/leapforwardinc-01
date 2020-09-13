@@ -21,14 +21,24 @@
         <h2 class="headline headline--small-plus t-center">Upcoming Events</h2>
 
         <?php 
-          // Custom Query
+          $today = date('Ymd');
+
+          // Custom Query with Ordering and Sorting
           $homepageEvents = new WP_Query(
             array(
-              'posts_per_page' => 0, // 2
+              'posts_per_page' => -1, // 2
               'post_type'      => 'event',
               'meta_key'       => 'event_date',
               'orderby'        => 'meta_value_num', // formerly 'post_date', 'rand', meta_value !event_date
-              'order'          => 'ASC'
+              'order'          => 'ASC',
+              'meta_query'     => array( // eliminate non-adherents to sub-query
+                array(
+                  'key' => 'event_date',
+                  'compare' => '>=',
+                  'value' => $today,
+                  'type' => 'numeric'
+                )
+              )
             )
           );
 
