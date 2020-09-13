@@ -82,9 +82,24 @@
                     <?php the_title() ?>
                   </a>
                 </h5>
-                <p><?php echo wp_trim_words(get_the_content(), 18); ?>
-                  <a href="<?php the_permalink(); ?>" class="nu gray">Read more</a></p>
-              </div>
+                <p>
+                  <!-- Nuanced Excerpt -->
+                  <?php 
+                    if (has_excerpt()) {
+                      echo get_the_excerpt();
+                    } else {
+                      echo wp_trim_words(get_the_content(), 18);
+                    }
+                  ?>
+                  <a href="<?php the_permalink(); ?>" class="nu gray">Read more</a>
+                </p>
+                <!-- <p><?php the_excerpt(); ?>
+                  <a href="<?php the_permalink(); ?>" class="nu gray">Read more</a>
+                </p> -->
+                <!-- <p><?php echo wp_trim_words(get_the_content(), 18); ?>
+                  <a href="<?php the_permalink(); ?>" class="nu gray">Read more</a>
+                </p> -->
+                </div>
             </div>
           <?php } wp_reset_postdata();
         ?>
