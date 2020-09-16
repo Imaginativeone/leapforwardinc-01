@@ -12,10 +12,10 @@ Convention: (page)-page-name.php<br/>
         
         <!-- Page Title -->
         <!-- <h1 class="page-banner__title"><?php the_archive_title(); ?></h1> -->
-        <h1 class="page-banner__title">Past Events</h1>
+        <h1 class="page-banner__title">Past Events</h1><!-- DF Update -->
         <!-- <h1 class="page-banner__title">Our History</h1> -->
         <div class="page-banner__intro">
-          <p>A Recap of Our Past Events</p>
+          <p>A Recap of Our Past Events</p><!-- DF Update -->
         </div>
       </div>  
     </div>
@@ -25,8 +25,33 @@ Convention: (page)-page-name.php<br/>
   <!-- See functions.php for Info on Manipulating the Default URL: pre_get_posts Hook -->
 
   <?php 
-    while(have_posts()) {
-      the_post(); ?>
+
+    $today = date('Ymd');
+
+    // Custom Query with Ordering and Sorting
+    $pastEvents = new WP_Query(
+      array(
+        'posts_per_page' => 2,                // This doesn't work for pagination, only works for default queries. 
+                                              // This is a custom query.
+                                              // paginate_links() is working with the default query
+        'paged'          => get_query_var('paged', 1),
+        'post_type'      => 'event',
+        'meta_key'       => 'event_date',
+        'orderby'        => 'meta_value_num', // formerly 'post_date', 'rand', meta_value !event_date
+        'order'          => 'ASC',
+        'meta_query'     => array( // eliminate non-adherents to sub-query
+          array(
+            'key' => 'event_date',
+            'compare' => '<',
+            'value' => $today,
+            'type' => 'numeric'
+          )
+        )
+      )
+    );
+
+    while($pastEvents->have_posts()) {
+      $pastEvents->the_post(); ?>
       <!-- Beg of HTML for an Event on the Home Page -->
       <div class="event-summary">
         <!-- <a class="event-summary__date t-center" href="<?php the_permalink(); ?>">
@@ -55,7 +80,7 @@ Convention: (page)-page-name.php<br/>
   ?>
 
   <!-- Pagination -->
-  <?php echo paginate_links(); ?>
+  <?php echo paginate_links(array('total' => $pastEvents->max_num_pages)); ?>
 
   </div>
 

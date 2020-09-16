@@ -1,13 +1,13 @@
 <?php 
 
-  $subscribers = get_users([
-    'role__in' => ['administrator', 'subscriber']
-  ]);
+  // $subscribers = get_users([
+  //   'role__in' => ['administrator', 'subscriber']
+  // ]);
 
-  foreach($subscribers as $user) {
-    // print_r($user);
-    echo $user->user_nicename . "<br/>";
-  }
+  // foreach($subscribers as $user) {
+  //   // print_r($user);
+  //   echo $user->user_nicename . "<br/>";
+  // }
 
   // <!-- This code pulls in the contents of header.php -->
   get_header(); ?>
