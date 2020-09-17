@@ -2,6 +2,11 @@ Single Donor Page<br/>
 
 <?php 
 
+// TODO
+// 001 Add a profile picture
+// 002 Add custom fields
+// 003 Beautify student info
+
 $current_user = wp_get_current_user();
   echo "Current User: " . $current_user->first_name . " " . $current_user->last_name  . "<br/>";
 
@@ -24,8 +29,14 @@ $current_user = wp_get_current_user();
   echo "<hr>";
 
   foreach($students as $student) {
+
+    // echo "Student: " . print_r($student);
+
+    $student_avatar = get_avatar($student, 32);
+
     echo "<li>";
-    echo $student->first_name . " " . $student->last_name . "<br/>";
+    echo $student->first_name . " " . $student->last_name;
+    echo $student_avatar . "<br/>";
     echo "</li>";
   }
 
