@@ -14,14 +14,14 @@
       <a href="<?php echo get_post_type_archive_link('program'); ?>" class="btn btn--large btn--blue">Find Your Major</a>
       <br/>
       <?php 
-        $subscribers = get_users([
-          'role__in' => ['administrator', 'subscriber', 'student']
-        ]);
+        // $subscribers = get_users([
+        //   'role__in' => ['administrator', 'subscriber', 'student']
+        // ]);
 
-        foreach($subscribers as $user) {
-          // print_r($user);
-          echo $user->user_nicename . "<br/>";
-        }
+        // foreach($subscribers as $user) {
+        //   // print_r($user);
+        //   echo $user->user_nicename . "<br/>";
+        // }
       ?>
     </div>
   </div>

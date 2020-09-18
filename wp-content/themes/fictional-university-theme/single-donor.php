@@ -7,37 +7,37 @@ Single Donor Page<br/>
 // 002 Add custom fields
 // 003 Beautify student info
 
-$current_user = wp_get_current_user();
-  echo "Current User: " . $current_user->first_name . " " . $current_user->last_name  . "<br/>";
+// $current_user = wp_get_current_user();
+//   echo "Current User: " . $current_user->first_name . " " . $current_user->last_name  . "<br/>";
 
-  $donors = get_users([
-    // 'role__in' => ['administrator', 'subscriber', 'student']
-    'role__in' => ['donor']
-  ]);
+  // $donors = get_users([
+  //   // 'role__in' => ['administrator', 'subscriber', 'student']
+  //   'role__in' => ['donor']
+  // ]);
 
-  foreach($donors as $donor) {
-    echo "<li>";
-    echo $donor->first_name . " " . $donor->last_name . "<br/>";
-    echo "</li>";
-  }
+  // foreach($donors as $donor) {
+  //   echo "<li>";
+  //   echo $donor->first_name . " " . $donor->last_name . "<br/>";
+  //   echo "</li>";
+  // }
 
-  $students = get_users([
-    // 'role__in' => ['administrator', 'subscriber', 'student']
-    'role__in' => ['student']
-  ]);
+  // $students = get_users([
+  //   // 'role__in' => ['administrator', 'subscriber', 'student']
+  //   'role__in' => ['student']
+  // ]);
 
-  echo "<hr>";
+  // echo "<hr>";
 
-  foreach($students as $student) {
+  // foreach($students as $student) {
 
-    // echo "Student: " . print_r($student);
+  //   // echo "Student: " . print_r($student);
 
-    $student_avatar = get_avatar($student, 32);
+  //   $student_avatar = get_avatar($student, 32);
 
-    echo "<li>";
-    echo $student->first_name . " " . $student->last_name;
-    echo $student_avatar . "<br/>";
-    echo "</li>";
-  }
+  //   echo "<li>";
+  //   echo $student->first_name . " " . $student->last_name;
+  //   echo $student_avatar . "<br/>";
+  //   echo "</li>";
+  // }
 
 ?>

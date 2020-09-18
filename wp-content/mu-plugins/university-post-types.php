@@ -4,6 +4,8 @@
     
     register_post_type('event', array(
       'show_in_rest' => true, // Modern Editor
+      'capability_type' => 'event', // 'event' permissions, 'post' by default, see next line
+      'map_meta_cap'    => true,    // These two lines add 'Events' to the Members Plugin
       'supports' => array('title', 'editor', 'excerpt'), // CPT Excerpts now happen, 'editor' is mandatory
       // 'custom-fields' removed, using ACF now
       'rewrite' => array('slug' => 'events'), // Custom Archive URL

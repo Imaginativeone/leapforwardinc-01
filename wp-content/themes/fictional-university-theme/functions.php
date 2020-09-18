@@ -97,18 +97,6 @@
   // See archive-event.php for info about Default Queries Adjustments
   add_action('pre_get_posts', 'university_adjust_queries');
 
-  function maybe_redirect() {
-    // if( current_user_can( 'manage_options' ) ) return;
-    // wp_redirect( home_url( '/profile' ), 302 );
-    // exit();
-    echo "This is a potential attempt to redirect. This is a potential attempt to redirect";
-    // wp_redirect( home_url( '/events' ), 302 );
-    // exit();
-  }
-
-  add_action( 'load-profile.php', 'maybe_redirect' );
-  // add_action( 'load-index.php',   'maybe_redirect' );
-
   function pageBanner($args = NULL) {
     // PHP Logic will live here
     if (!$args['title']) {
@@ -156,4 +144,40 @@
     <!-- End Page Banner HTML -->
     <?php
   }
+
+  function maybe_redirect() {
+    // if( current_user_can( 'manage_options' ) ) return;
+    // wp_redirect( home_url( '/profile' ), 302 );
+    // exit();
+    echo "This is a potential attempt to redirect. This is a potential attempt to redirect";
+    // wp_redirect( home_url( '/events' ), 302 );
+    // exit();
+  }
+
+  add_action( 'load-profile.php', 'maybe_redirect' );
+  // add_action( 'load-index.php',   'maybe_redirect' );
+
+  // Redirect subscriber accounts out of admin and onto homepage
+  add_action('admin_init', 'redirectSubsToFrontEnd');
+  
+  function redirectSubsToFrontEnd() {
+
+    $ourCurrentUser = wp_get_current_user();
+
+    if (count($ourCurrentUser->roles) == 1 AND $ourCurrentUser->roles[0] == 'subscriber') {
+      wp_redirect(site_url('/'));
+      exit();
+    }
+
+  }
+
+  add_action('wp_loaded', 'noSubsAdminBar');
+  
+  function noSubsAdminBar() {
+    $ourCurrentUser = wp_get_current_user();
+    if (count($ourCurrentUser->roles) == 1 AND $ourCurrentUser->roles[0] == 'subscriber') {
+      show_admin_bar(false);
+    }
+  }
+
 ?>
