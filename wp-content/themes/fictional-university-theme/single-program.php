@@ -1,5 +1,5 @@
 <!-- Template Page for the "Programs" Custom Post Type -->
-Template Page for the "Programs" Custom Post Type<br/>
+<!-- Template Page for the "Programs" Custom Post Type<br/> -->
 
 <!-- This is the fallback page for individual POSTS (Not Pages) -->
 <?php 
@@ -36,10 +36,49 @@ get_header();
           </p>
         </div>
 
+        Template Page for the "Program" Custom Post Type<br/><br/>
+
         <div class="generic-content"><?php the_content()?></div>
 
         <!-- Just need to add on ONE extra filter -->
         <?php 
+
+          // Add Professors Here
+
+            // Custom Query with Ordering and Sorting
+            $relatedProfessors = new WP_Query(
+              array(
+                'posts_per_page' => -1, // 2
+                'post_type'      => 'professor',
+                'orderby'        => 'title', // formerly 'post_date', 'rand', meta_value !event_date
+                'order'          => 'ASC',
+                'meta_query'     => array( // eliminate non-adherents to sub-query
+                  array(
+                    'key' => 'related_programs', // Need to serialize the string of text
+                    'compare' => 'LIKE',
+                    'value' => '"' . get_the_id() . '"'
+                  )
+                )
+              )
+            );
+
+            if ($relatedProfessors->have_posts()) {
+              echo "<hr class='section-break'>";
+              // echo "<h2 class='headline headline--medium'>Upcoming " . get_the_title() ." Events</h2>";
+              echo "<h2 class='headline headline--medium'>" . get_the_title() ." Professors</h2>";
+    
+              while($relatedProfessors->have_posts()) {
+                $relatedProfessors->the_post(); ?>
+                <!-- Beg of Professors Listing -->
+                <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+                <!-- End of Professors Listing -->
+                <?php 
+              }  
+            }
+          // End of Add Professors
+
+          wp_reset_postdata(); // If this is missing, 2nd query does not display (Global IDs now reset)
+
           $today = date('Ymd');
 
           // Custom Query with Ordering and Sorting
@@ -85,7 +124,8 @@ get_header();
                 </a>
                 <div class="event-summary__content">
                   <h5 class="event-summary__title headline headline--tiny">
-                    <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
+                    <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                  </h5>
                   <p>
                     <!-- <?php echo wp_trim_words(get_the_content(), 18); ?> -->
                     <!-- Nuanced Excerpt -->

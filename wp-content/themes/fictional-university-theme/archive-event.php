@@ -1,5 +1,5 @@
 <!-- Template Page for the "Events" Custom Post Type -->
-Template Page for the "Events" Custom Post Type ARCHIVE<br/>
+<!-- Template Page for the "Events" Custom Post Type ARCHIVE<br/> -->
 
 <?php 
   get_header(); ?>
@@ -23,6 +23,8 @@ Template Page for the "Events" Custom Post Type ARCHIVE<br/>
 
   <!-- See functions.php for Info on Manipulating the Default URL: pre_get_posts Hook -->
 
+  Template Page for the "Events" Custom Post Type ARCHIVE<br/><br/>
+
   <?php 
     while(have_posts()) {
       the_post(); ?>
@@ -43,7 +45,8 @@ Template Page for the "Events" Custom Post Type ARCHIVE<br/>
         </a>
         <div class="event-summary__content">
           <h5 class="event-summary__title headline headline--tiny">
-            <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
+            <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+          </h5>
           <p><?php echo wp_trim_words(get_the_content(), 18); ?>
             <a href="<?php the_permalink(); ?>" class="nu gray">Learn more</a>
           </p>
