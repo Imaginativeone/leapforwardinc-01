@@ -37,6 +37,7 @@ get_header();
         </div>
 
         <div class="generic-content"><?php the_content()?></div>
+        
         <?php 
           $relatedPrograms = get_field('related_programs');
 
