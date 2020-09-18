@@ -1,28 +1,20 @@
 <!-- Template Page for the "Events" Custom Post Type -->
-Template Page for the "Past Events" Page<br/>
-Convention: (page)-page-name.php<br/>
 
 <?php 
-  get_header(); ?>
-
-    <div class="page-banner">
-      <!-- <div class="page-banner__bg-image" style="background-image: url(images/ocean.jpg);"></div> -->
-      <div class="page-banner__bg-image" style="background-image: url(<?php echo get_theme_file_uri('/images/ocean.jpg')?>);"></div>
-      <div class="page-banner__content container container--narrow">
-        
-        <!-- Page Title -->
-        <!-- <h1 class="page-banner__title"><?php the_archive_title(); ?></h1> -->
-        <h1 class="page-banner__title">Past Events</h1><!-- DF Update -->
-        <!-- <h1 class="page-banner__title">Our History</h1> -->
-        <div class="page-banner__intro">
-          <p>A Recap of Our Past Events</p><!-- DF Update -->
-        </div>
-      </div>  
-    </div>
+  get_header(); 
+  pageBanner(
+    array(
+      'title' => 'Past Events',
+      'subtitle' => 'A Recap of Our Past Events'
+    )
+  ); 
+?>
 
   <div class="container container--narrow page-section">
 
   <!-- See functions.php for Info on Manipulating the Default URL: pre_get_posts Hook -->
+  Template Page for the "Past Events" Page<br/>
+  Convention: (page)-page-name.php<br/><br/>
 
   <?php 
 

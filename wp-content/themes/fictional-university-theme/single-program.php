@@ -7,7 +7,8 @@
 get_header();
 
   while(have_posts()) { // Famous WordPress Loop!
-    the_post(); ?>
+    the_post(); 
+    pageBanner(); ?>
 
       <!-- Still within the while loop, but in HTML Mode -->
       <div class="page-banner">
