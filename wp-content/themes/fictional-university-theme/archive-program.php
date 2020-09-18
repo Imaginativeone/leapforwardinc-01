@@ -1,5 +1,5 @@
 <!-- Template Page for the "Programs" Custom Post Type -->
-Template Page for the "Programs" Custom Post Type ARCHIVE<br/>
+<!-- Template Page for the "Programs" Custom Post Type ARCHIVE<br/> -->
 
 <?php 
   get_header(); ?>
@@ -21,29 +21,26 @@ Template Page for the "Programs" Custom Post Type ARCHIVE<br/>
 
   <div class="container container--narrow page-section">
 
-  <!-- See functions.php for Info on Manipulating the Default URL: pre_get_posts Hook -->
+    <!-- See functions.php for Info on Manipulating the Default URL: pre_get_posts Hook -->
 
-  <ul class="link-list min-list">
+    Template Page for the "Programs" Custom Post Type ARCHIVE<br/>
 
-  <?php 
-    while(have_posts()) {
-      the_post(); ?>
-      <!-- Beg of HTML for an Program on its own Archive Page -->
-      <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
-      <!-- End of HTML for an Program on its own Archive Page -->
-    <?php }
-  ?>
+    <ul class="link-list min-list">
 
-  </ul>
+    <?php 
+      while(have_posts()) {
+        the_post(); ?>
+        <!-- Beg of HTML for an Program on its own Archive Page -->
+        <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+        <!-- End of HTML for an Program on its own Archive Page -->
+      <?php }
+    ?>
 
-  <!-- Pagination -->
-  <?php echo paginate_links(); ?>
+    </ul>
 
-  <hr class="section-break">
+    <!-- Pagination -->
+    <?php echo paginate_links(); ?>
 
-  <p>Looking for a recap of past programs?
-    <a href="<?php echo site_url('/past-programs') ?>">Check out our past programs archive.</a>
-  </p>
   </div>
 
   <?php get_footer();

@@ -6,7 +6,7 @@
       'show_in_rest' => true, // Modern Editor
       'supports' => array('title', 'editor', 'excerpt'), // CPT Excerpts now happen, 'editor' is mandatory
       // 'custom-fields' removed, using ACF now
-      'rewrite' => array('slug' => 'events'),
+      'rewrite' => array('slug' => 'events'), // Custom Archive URL
       'has_archive' => true,
       'public' => true,
       'labels' => array(
@@ -23,7 +23,7 @@
       'show_in_rest' => true, // Modern Editor
       'supports' => array('title', 'editor', 'excerpt'), // CPT Excerpts now happen, 'editor' is mandatory
       // 'custom-fields' removed, using ACF now
-      'rewrite' => array('slug' => 'programs'),
+      'rewrite' => array('slug' => 'programs'), // Custom Archive URL
       'has_archive' => true,
       'public' => true,
       'labels' => array(
@@ -34,6 +34,22 @@
         'singular_name' => 'Program'
       ),
       'menu_icon' => 'dashicons-awards'
+    ));
+
+    // Professor Post Type
+    // No Archive
+    register_post_type('professor', array(
+      'show_in_rest' => true, // Modern Editor
+      'supports'     => array('title', 'editor', 'excerpt'), // CPT Excerpts now happen, 'editor' is mandatory
+      'public'       => true,
+      'labels'       => array(
+        'name'          => 'Professors', // Menu Item
+        'add_new_item'  => 'Add New Professors',
+        'edit_item'     => 'Edit Professor',
+        'all_items'     => 'All Professors',
+        'singular_name' => 'Professor'
+      ),
+      'menu_icon' => 'dashicons-welcome-learn-more'
     ));
 
     // Student Custom Post Type
