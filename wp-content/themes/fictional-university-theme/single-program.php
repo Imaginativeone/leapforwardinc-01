@@ -67,13 +67,22 @@ get_header();
               // echo "<h2 class='headline headline--medium'>Upcoming " . get_the_title() ." Events</h2>";
               echo "<h2 class='headline headline--medium'>" . get_the_title() ." Professors</h2>";
     
+              echo "<ul class='professor-cards'>";
+
               while($relatedProfessors->have_posts()) {
                 $relatedProfessors->the_post(); ?>
                 <!-- Beg of Professors Listing -->
-                <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+                <li class="professor-card__list-item"><!-- Each Professor -->
+                  <a class="professor-card" href="<?php the_permalink(); ?> ">
+                    <img class="professor-card__image" src="<?php the_post_thumbnail_url(); ?>">
+                    <span class="professor-card__name"><?php the_title(); ?></span>
+                  </a>
+                </li>
                 <!-- End of Professors Listing -->
                 <?php 
-              }  
+              }
+
+              echo "</ul>";
             }
           // End of Add Professors
 

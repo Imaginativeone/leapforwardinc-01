@@ -40,7 +40,7 @@
     // No Archive
     register_post_type('professor', array(
       'show_in_rest' => true, // Modern Editor
-      'supports'     => array('title', 'editor', 'excerpt'), // CPT Excerpts now happen, 'editor' is mandatory
+      'supports'     => array('title', 'editor', 'excerpt', 'thumbnail'), // CPT Excerpts now happen, 'editor' is mandatory
       'public'       => true,
       'labels'       => array(
         'name'          => 'Professors', // Menu Item

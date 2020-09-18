@@ -25,9 +25,16 @@ get_header();
 
       <div class="container container--narrow page-section">
 
-        Template Page for the "Professors" Custom Post Type<br/><br/>
+        <!-- Template Page for the "Professors" Custom Post Type<br/><br/> -->
 
-        <div class="generic-content"><?php the_content()?></div>
+        <!-- See single-program.php -->
+        <!-- <div class="generic-content"><?php the_post_thumbnail(); the_content(); ?></div> -->
+        <div class="generic-content">
+          <div class="row group">
+            <div class="one-third"><?php the_post_thumbnail(); ?></div>
+            <div class="two-thirds"><?php the_content(); ?></div>
+          </div>
+        </div>
         
         <?php 
           $relatedPrograms = get_field('related_programs');
