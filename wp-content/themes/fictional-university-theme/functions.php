@@ -180,4 +180,17 @@
     }
   }
 
+  // Customize Login Screen
+  add_filter('login_headerurl', 'ourHeaderUrl');
+
+  function ourHeaderUrl() {
+    return esc_url(site_url('/'));
+  }
+
+  add_action('login_enqueue_scripts', 'ourLoginCSS');
+
+  function ourLoginCSS() {
+    wp_enqueue_style ('our-main-styles', get_theme_file_uri('/bundled-assets/styles.8d464591dc2348070a07.css'));
+  }
+
 ?>
