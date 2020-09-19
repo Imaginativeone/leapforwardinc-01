@@ -12,9 +12,9 @@
       
     } else {
 
-      wp_enqueue_script('our-vendors-js',     get_theme_file_uri('/bundled-assets/vendors~scripts.8c97d901916ad616a264.js'), NULL, '1.0', true);
-      wp_enqueue_script('main-university-js', get_theme_file_uri('/bundled-assets/scripts.8d464591dc2348070a07.js'), NULL, '1.0', true);
-      wp_enqueue_style ('our-main-styles',    get_theme_file_uri('/bundled-assets/styles.8d464591dc2348070a07.css'));
+      wp_enqueue_script('our-vendors-js',     get_theme_file_uri('/bundled-assets/vendors~scripts.64e2c292d6fcbaf95af9.js'), NULL, '1.0', true);
+      wp_enqueue_script('main-university-js', get_theme_file_uri('/bundled-assets/scripts.12adb87787517e5690d6.js'), NULL, '1.0', true);
+      wp_enqueue_style ('our-main-styles',    get_theme_file_uri('/bundled-assets/styles.12adb87787517e5690d6.css'));
       
       wp_enqueue_script('main-university-javascript', get_theme_file_uri('/js/scripts-bundled.js'), NULL, '1.0', true);
       wp_enqueue_style('custom-google-fonts', '//fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i|Roboto:100,300,400,400i,700,700i');
@@ -190,7 +190,7 @@
   add_action('login_enqueue_scripts', 'ourLoginCSS');
 
   function ourLoginCSS() {
-    wp_enqueue_style ('our-main-styles', get_theme_file_uri('/bundled-assets/styles.8d464591dc2348070a07.css'));
+    wp_enqueue_style ('our-main-styles', get_theme_file_uri('/bundled-assets/styles.12adb87787517e5690d6.css'));
   }
 
   function my_login_logo_url() {
