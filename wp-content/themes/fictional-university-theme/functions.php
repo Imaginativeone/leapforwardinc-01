@@ -193,4 +193,17 @@
     wp_enqueue_style ('our-main-styles', get_theme_file_uri('/bundled-assets/styles.8d464591dc2348070a07.css'));
   }
 
+  function my_login_logo_url() {
+    return home_url();
+  }
+
+  add_filter( 'login_headerurl', 'my_login_logo_url' );
+
+  function my_login_logo_url_title() {
+      // return 'Leap Forward';
+      return get_bloginfo('name');
+  }
+
+  add_filter( 'login_headertitle', 'my_login_logo_url_title' );
+
 ?>
