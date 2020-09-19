@@ -41,6 +41,7 @@
           </nav>
           <div class="site-header__util">
             <?php if(is_user_logged_in()) { ?>
+              <a href="<?php echo esc_url(site_url('/my-notes')); ?>" class="btn btn--small btn--orange float-left push-right">My Notes</a>
               <a href="<?php echo wp_logout_url(); ?>"
                 class="btn btn--small btn--dark-orange btn--with-photo float-left">
                 <span class="site-header__avatar"><?php get_avatar( get_current_user_id(), 60); ?></span>
@@ -51,7 +52,6 @@
               <a href="<?php echo wp_registration_url(); ?>" class="btn btn--small btn--dark-orange float-left">Sign Up</a>
             <?php }
             ?>
-
             <span class="search-trigger js-search-trigger"><i class="fa fa-search" aria-hidden="true"></i></span>
           </div>
         </div>

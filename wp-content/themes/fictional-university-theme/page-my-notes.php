@@ -2,6 +2,10 @@
 <!-- This is the fallback page for individual PAGES (Not Posts) -->
 <?php 
 
+  if (!is_user_logged_in()) {
+    wp_redirect(esc_url(site_url('/')));
+  }
+
   get_header();
 
   while(have_posts()) { // Famous WordPress Loop!
