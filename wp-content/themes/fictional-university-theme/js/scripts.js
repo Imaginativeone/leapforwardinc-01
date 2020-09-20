@@ -1,14 +1,16 @@
 import "../css/style.css"
 
 // Our modules / classes
-import MobileMenu from "./modules/MobileMenu"
-import HeroSlider from "./modules/HeroSlider"
+import MobileMenu from "./modules/MobileMenu" // Small Devices
+import HeroSlider from "./modules/HeroSlider" // Slide Show
+import Search     from "./modules/Search"
 
-import MyNotes from "./modules/MyNotes"
+import MyNotes    from "./modules/MyNotes"
 
 // Instantiate a new object using our modules/classes
-var mobileMenu = new MobileMenu()
-var heroSlider = new HeroSlider()
+var mobileMenu    = new MobileMenu()
+var heroSlider    = new HeroSlider()
+var search        = new Search();
 
 var myNotes = new MyNotes();
 
