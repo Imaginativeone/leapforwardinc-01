@@ -19,7 +19,7 @@ class Search {
     this.closeButton.on('click', this.closeOverlay.bind(this));
 
     // Keyboard Events
-    $(document).on('keyup', this.keyPressDispatcher.bind(this));
+    $(document).on('keydown', this.keyPressDispatcher.bind(this));
   }
 
   // Locating Keycodes S13V58-08:00
