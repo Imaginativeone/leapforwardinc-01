@@ -9,8 +9,10 @@ class Search {
     this.openButton  = $(".js-search-trigger");
     this.closeButton = $(".search-overlay__close");
     this.searchOverlay = $(".search-overlay");
+    this.searchField = $("#search-term");
     this.events();
     this.isOverlayOpen = false;
+    this.typingTimer;
   }
 
   // 2. Events
@@ -20,11 +22,20 @@ class Search {
 
     // Keyboard Events
     $(document).on('keydown', this.keyPressDispatcher.bind(this));
+    this.searchField.on('keydown', this.typingLogic.bind(this)); // See constructor
   }
 
   // Locating Keycodes S13V58-08:00
 
   // 3. Methods
+  typingLogic() {
+    // alert("Hello from typingLogic()");
+    clearTimeout(this.typingTimer);
+    this.typingTimer = setTimeout(() => {
+      console.log('This is a timeout test.');
+    }, 2000);
+  }
+
   keyPressDispatcher(e) { // The parameter contains the key, s:83, Esc: 27
     // console.log('This is a test.', e.keyCode);
 
