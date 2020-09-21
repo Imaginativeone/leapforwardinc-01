@@ -16,15 +16,35 @@ class Search {
   events() {
     this.openButton.on('click', this.openOverlay.bind(this));
     this.closeButton.on('click', this.closeOverlay.bind(this));
+
+    // Keyboard Events
+    $(document).on('keyup', this.keyPressDispatcher.bind(this));
   }
 
+  // Locating Keycodes S13V58-08:00
+
   // 3. Methods
+  keyPressDispatcher(e) { // The parameter contains the key, s:83, Esc: 27
+    console.log('This is a test.', e.keyCode);
+
+    if (e.keyCode == 83) {
+      this.openOverlay();
+    }
+
+    if (e.keyCode == 27) {
+      this.closeOverlay();
+    }
+
+  }
+
   openOverlay() {
     this.searchOverlay.addClass("search-overlay--active");
+    $('body').addClass('body-no-scroll'); // CSS 'overflow-hidden'
   }
 
   closeOverlay() {
     this.searchOverlay.removeClass("search-overlay--active");
+    $('body').removeClass('body-no-scroll'); // CSS 'overflow-hidden'
   }
 
 }
