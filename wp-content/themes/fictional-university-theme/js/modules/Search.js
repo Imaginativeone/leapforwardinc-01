@@ -58,8 +58,15 @@ class Search {
   }
 
   getResults() {
-    this.resultsDiv.html("Image real search results here.");
-    this.isSpinnerVisible = false;
+    // this.resultsDiv.html("Imagine real search results here...");
+    // this.isSpinnerVisible = false;
+    // How can I use JavaScript to send out a request to a URL?
+    // $.getJSON(url, function);
+    const $urlString = 'http://leapforward01.local/wp-json/wp/v2/posts?search=' + this.searchField.val();
+    $.getJSON($urlString, (posts) => {
+        alert(posts[0].title.rendered);
+      }
+    );
   }
 
   keyPressDispatcher(e) { // The parameter contains the key, s:83, Esc: 27
