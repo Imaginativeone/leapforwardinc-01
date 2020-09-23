@@ -63,8 +63,20 @@ class Search {
     // How can I use JavaScript to send out a request to a URL?
     // $.getJSON(url, function);
     const $urlString = 'http://leapforward01.local/wp-json/wp/v2/posts?search=' + this.searchField.val();
-    $.getJSON($urlString, (posts) => {
-        alert(posts[0].title.rendered);
+    $.getJSON($urlString, posts => {
+        // alert(posts[0].title.rendered);
+        // this.resultsDiv.html('Imagine results here.');
+
+        const testArray = ['red', 'orange', 'yellow'];
+
+        this.resultsDiv.html(`
+          <h2 class="search-overlay__section-title">General Information</h2>
+          <ul class="link-list min-list">
+            <!-- <li><a href="${ posts[0].link }">${ posts[0].title.rendered }</a></li> -->
+            ${ testArray.map(item => `<li>${ item }</li>`).join('') }
+          </ul>
+        `
+        );
       }
     );
   }

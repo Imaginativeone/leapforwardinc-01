@@ -13,18 +13,6 @@ get_header();
       <!-- Still within the while loop, but in HTML Mode -->
 
       <div class="container container--narrow page-section">
-        <!-- Breadcrumb Box -->
-        <div class="metabox metabox--position-up metabox--with-home-link">
-          <p>
-            <!-- Instead of '/blog', I want '/events' -->
-            <!-- echo get_post_type_archive_link('event'); -->
-            <a class="metabox__blog-home-link" href="<?php echo get_post_type_archive_link('program'); ?>">
-              <i class="fa fa-home" aria-hidden="true"></i>All Programs
-            </a>
-            <!-- See functions.php -->
-            <span class="metabox__main"><?php the_title(); ?></span>
-          </p>
-        </div>
 
         Template Page for the "Program" Custom Post Type<br/><br/>
 
