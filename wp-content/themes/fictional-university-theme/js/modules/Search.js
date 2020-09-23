@@ -105,6 +105,7 @@ class Search {
     this.searchOverlay.addClass("search-overlay--active");
     $('body').addClass('body-no-scroll'); // CSS 'overflow-hidden'
     
+    this.searchField.val('');
     setTimeout(() => { this.searchField.focus(); }, 301);
 
     console.log('Our open method just ran.');
