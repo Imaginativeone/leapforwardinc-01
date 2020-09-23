@@ -62,7 +62,11 @@ class Search {
     // this.isSpinnerVisible = false;
     // How can I use JavaScript to send out a request to a URL?
     // $.getJSON(url, function);
-    const $urlString = 'https://leapforward01.local/wp-json/wp/v2/posts?search=' + this.searchField.val();
+
+    // See functions.php > wp_localize_script();
+    const $urlString = universityData.root_url + '/wp-json/wp/v2/posts?search=' + this.searchField.val();
+    // const $urlString = 'https://leapforward01.local/wp-json/wp/v2/posts?search=' + this.searchField.val();
+
     $.getJSON($urlString, posts => {
         // alert(posts[0].title.rendered);
         // this.resultsDiv.html('Imagine results here.');
@@ -78,6 +82,7 @@ class Search {
           Posts: ${ posts.length }
         `
         ); // ${ testArray.map(item => `<li>${ item }</li>`).join('') }
+        this.isSpinnerVisible = false;
       }
     );
   }
