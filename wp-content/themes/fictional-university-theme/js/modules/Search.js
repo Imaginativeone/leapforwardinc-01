@@ -62,7 +62,7 @@ class Search {
     // this.isSpinnerVisible = false;
     // How can I use JavaScript to send out a request to a URL?
     // $.getJSON(url, function);
-    const $urlString = 'http://leapforward01.local/wp-json/wp/v2/posts?search=' + this.searchField.val();
+    const $urlString = 'https://leapforward01.local/wp-json/wp/v2/posts?search=' + this.searchField.val();
     $.getJSON($urlString, posts => {
         // alert(posts[0].title.rendered);
         // this.resultsDiv.html('Imagine results here.');
