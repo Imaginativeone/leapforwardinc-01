@@ -67,16 +67,16 @@ class Search {
         // alert(posts[0].title.rendered);
         // this.resultsDiv.html('Imagine results here.');
 
-        const testArray = ['red', 'orange', 'yellow'];
+        // const testArray = ['red', 'orange', 'yellow'];
 
         this.resultsDiv.html(`
           <h2 class="search-overlay__section-title">General Information</h2>
           <ul class="link-list min-list">
             <!-- <li><a href="${ posts[0].link }">${ posts[0].title.rendered }</a></li> -->
-            ${ testArray.map(item => `<li>${ item }</li>`).join('') }
+            ${ posts.map(item => `<li><a href="${ item.link }">${ item.title.rendered }</a></li>`).join('') }
           </ul>
         `
-        );
+        ); // ${ testArray.map(item => `<li>${ item }</li>`).join('') }
       }
     );
   }
