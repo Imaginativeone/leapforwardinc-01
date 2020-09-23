@@ -64,8 +64,8 @@ class Search {
     // $.getJSON(url, function);
 
     // See functions.php > wp_localize_script();
-    const $urlString = universityData.root_url + '/wp-json/wp/v2/posts?search=' + this.searchField.val();
-    // const $urlString = 'https://leapforward01.local/wp-json/wp/v2/posts?search=' + this.searchField.val();
+    // const $urlString = universityData.root_url + '/wp-json/wp/v2/posts?search=' + this.searchField.val();
+    const $urlString = 'https://leapforward01.local/wp-json/wp/v2/posts?search=' + this.searchField.val();
 
     $.getJSON($urlString, posts => {
         // alert(posts[0].title.rendered);
