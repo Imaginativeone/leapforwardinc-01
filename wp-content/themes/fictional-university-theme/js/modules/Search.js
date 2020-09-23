@@ -94,6 +94,8 @@ class Search {
 
   }
 
+  // Generic Change
+
   openOverlay() {
     this.searchOverlay.addClass("search-overlay--active");
     $('body').addClass('body-no-scroll'); // CSS 'overflow-hidden'
