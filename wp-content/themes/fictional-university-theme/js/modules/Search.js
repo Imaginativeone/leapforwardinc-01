@@ -71,10 +71,11 @@ class Search {
 
         this.resultsDiv.html(`
           <h2 class="search-overlay__section-title">General Information</h2>
-          <ul class="link-list min-list">
-            <!-- <li><a href="${ posts[0].link }">${ posts[0].title.rendered }</a></li> -->
+          <!-- Conditional Opening UL -->
+          ${ posts.length ? '<ul class="link-list min-list">' : '<p>No general information matches that search.</p>' }
             ${ posts.map(item => `<li><a href="${ item.link }">${ item.title.rendered }</a></li>`).join('') }
-          </ul>
+          ${ posts.length ? '</ul>' : '' } <!-- Conditional Closing UL -->
+          Posts: ${ posts.length }
         `
         ); // ${ testArray.map(item => `<li>${ item }</li>`).join('') }
       }
