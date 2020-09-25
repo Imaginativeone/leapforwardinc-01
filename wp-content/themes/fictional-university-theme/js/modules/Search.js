@@ -74,28 +74,29 @@ class Search {
     // S14V66-Synchronous-vs-Asynchronous-Part-1,t=8:20:03:26
     // Update the Nesting with Asynchronous Code
 
-    $.getJSON($urlPostsString, posts => {
-        // alert(posts[0].title.rendered);
-        // this.resultsDiv.html('Imagine results here.');
+    // S14V67-Synchronous-vs-Asynchronous-Part-2,t=0:00:10:11
+    // Update the Nesting with Asynchronous Code
 
-        // const testArray = ['red', 'orange', 'yellow'];
-        $.getJSON($urlPagesString, pages => {
+    $.when(
+      $.getJSON($urlPagesString),
+      $.getJSON($urlPostsString)
+      ).then((posts, pages) => {
 
-          let combinedResults = posts.concat(pages);
+        let combinedResults = posts[0].concat(pages[0]);
 
-          this.resultsDiv.html(`
-          <h2 class="search-overlay__section-title">General Information</h2>
-          <!-- Conditional Opening UL -->
-          ${ combinedResults.length ? '<ul class="link-list min-list">' : '<p>No general information matches that search.</p>' }
-            ${ combinedResults.map(item => `<li><a href="${ item.link }">${ item.title.rendered }</a></li>`).join('') }
-          ${ combinedResults.length ? '</ul>' : '' } <!-- Conditional Closing UL -->
-          combinedResults: ${ combinedResults.length }
-          `
-          ); // ${ testArray.map(item => `<li>${ item }</li>`).join('') }
-          this.isSpinnerVisible = false;
-        });
-      }
-    );
+        this.resultsDiv.html(`
+        <h2 class="search-overlay__section-title">General Information</h2>
+        <!-- Conditional Opening UL -->
+        ${ combinedResults.length ? '<ul class="link-list min-list">' : '<p>No general information matches that search.</p>' }
+          ${ combinedResults.map(item => `<li><a href="${ item.link }">${ item.title.rendered }</a></li>`).join('') }
+        ${ combinedResults.length ? '</ul>' : '' } <!-- Conditional Closing UL -->
+        combinedResults: ${ combinedResults.length }
+        `
+        ); // ${ testArray.map(item => `<li>${ item }</li>`).join('') }
+        this.isSpinnerVisible = false;
+
+    }); // jQuery Promises?
+
   }
 
   keyPressDispatcher(e) { // The parameter contains the key, s:83, Esc: 27
@@ -146,9 +147,9 @@ class Search {
       </div>
 
     </div>
-    `);
+    `
+    );
   }
-
 }
 
 export default Search;
