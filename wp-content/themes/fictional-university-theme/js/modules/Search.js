@@ -58,6 +58,8 @@ class Search {
     this.previousValue = this.searchField.val();
   }
 
+  // S14V66-Synchronous-vs-Asynchronous-Part-1,t=1:00
+
   getResults() {
     // this.resultsDiv.html("Imagine real search results here...");
     // this.isSpinnerVisible = false;
@@ -73,17 +75,19 @@ class Search {
         // this.resultsDiv.html('Imagine results here.');
 
         // const testArray = ['red', 'orange', 'yellow'];
+        $.getJSON(x, pages => {
 
-        this.resultsDiv.html(`
+          this.resultsDiv.html(`
           <h2 class="search-overlay__section-title">General Information</h2>
           <!-- Conditional Opening UL -->
           ${ posts.length ? '<ul class="link-list min-list">' : '<p>No general information matches that search.</p>' }
             ${ posts.map(item => `<li><a href="${ item.link }">${ item.title.rendered }</a></li>`).join('') }
           ${ posts.length ? '</ul>' : '' } <!-- Conditional Closing UL -->
           Posts: ${ posts.length }
-        `
-        ); // ${ testArray.map(item => `<li>${ item }</li>`).join('') }
-        this.isSpinnerVisible = false;
+          `
+          ); // ${ testArray.map(item => `<li>${ item }</li>`).join('') }
+          this.isSpinnerVisible = false;
+        });
       }
     );
   }
