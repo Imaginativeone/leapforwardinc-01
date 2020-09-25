@@ -95,6 +95,8 @@ class Search {
         ); // ${ testArray.map(item => `<li>${ item }</li>`).join('') }
         this.isSpinnerVisible = false;
 
+    }, () => {
+      this.resultsDiv.html('<p>Unexpected Error. Please Try Again.</p>');
     }); // jQuery Promises?
 
   }
