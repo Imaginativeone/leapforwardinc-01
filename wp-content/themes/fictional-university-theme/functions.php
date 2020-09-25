@@ -1,5 +1,7 @@
 <?php 
 
+  require get_theme_file_path('/includes/search-route.php');
+
   // S15V68-REST-API-New-Custom-Field
   // How do I add custom fields to the raw JSON?
 
