@@ -58,6 +58,8 @@ class Search {
     this.previousValue = this.searchField.val();
   }
 
+  // S14V66-Synchronous-vs-Asynchronous-Part-1,t=1:00:10:41
+
   getResults() {
     // this.resultsDiv.html("Imagine real search results here...");
     // this.isSpinnerVisible = false;
@@ -65,25 +67,33 @@ class Search {
     // $.getJSON(url, function);
 
     // See functions.php > wp_localize_script();
-    // const $urlString = universityData.root_url + '/wp-json/wp/v2/posts?search=' + this.searchField.val();
-    const $urlString = 'https://leapforward01.local/wp-json/wp/v2/posts?search=' + this.searchField.val();
+    // const $urlPostsString = universityData.root_url + '/wp-json/wp/v2/posts?search=' + this.searchField.val();
+    const $urlPostsString = 'https://leapforward01.local/wp-json/wp/v2/posts?search=' + this.searchField.val();
+    const $urlPagesString = 'https://leapforward01.local/wp-json/wp/v2/pages?search=' + this.searchField.val();
 
-    $.getJSON($urlString, posts => {
+    // S14V66-Synchronous-vs-Asynchronous-Part-1,t=8:20:03:26
+    // Update the Nesting with Asynchronous Code
+
+    $.getJSON($urlPostsString, posts => {
         // alert(posts[0].title.rendered);
         // this.resultsDiv.html('Imagine results here.');
 
         // const testArray = ['red', 'orange', 'yellow'];
+        $.getJSON($urlPagesString, pages => {
 
-        this.resultsDiv.html(`
+          let combinedResults = posts.concat(pages);
+
+          this.resultsDiv.html(`
           <h2 class="search-overlay__section-title">General Information</h2>
           <!-- Conditional Opening UL -->
-          ${ posts.length ? '<ul class="link-list min-list">' : '<p>No general information matches that search.</p>' }
-            ${ posts.map(item => `<li><a href="${ item.link }">${ item.title.rendered }</a></li>`).join('') }
-          ${ posts.length ? '</ul>' : '' } <!-- Conditional Closing UL -->
-          Posts: ${ posts.length }
-        `
-        ); // ${ testArray.map(item => `<li>${ item }</li>`).join('') }
-        this.isSpinnerVisible = false;
+          ${ combinedResults.length ? '<ul class="link-list min-list">' : '<p>No general information matches that search.</p>' }
+            ${ combinedResults.map(item => `<li><a href="${ item.link }">${ item.title.rendered }</a></li>`).join('') }
+          ${ combinedResults.length ? '</ul>' : '' } <!-- Conditional Closing UL -->
+          combinedResults: ${ combinedResults.length }
+          `
+          ); // ${ testArray.map(item => `<li>${ item }</li>`).join('') }
+          this.isSpinnerVisible = false;
+        });
       }
     );
   }
