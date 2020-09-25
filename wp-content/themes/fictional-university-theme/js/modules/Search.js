@@ -71,6 +71,8 @@ class Search {
     const $urlPostsString = 'https://leapforward01.local/wp-json/wp/v2/posts?search=' + this.searchField.val();
     const $urlPagesString = 'https://leapforward01.local/wp-json/wp/v2/pages?search=' + this.searchField.val();
 
+    // S14V66-Synchronous-vs-Asynchronous-Part-1,t=8:20:03:26
+    // Update the Nesting with Asynchronous Code
 
     $.getJSON($urlPostsString, posts => {
         // alert(posts[0].title.rendered);
