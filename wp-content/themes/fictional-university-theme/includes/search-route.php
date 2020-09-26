@@ -18,7 +18,8 @@
     //   'dog' => 'bark'
     // ); // PHP data automatically converted to JSON data
     $professors = new WP_Query(array(
-      'post_type' => 'professor',
+      // 'post_type' => 'professor',                      // I want to search all post types
+      'post_type' => array('post', 'page', 'professor'),
       // 's' => 'barksalot' // Search Argument
       's' => sanitize_text_field($data['term'])
     ));
