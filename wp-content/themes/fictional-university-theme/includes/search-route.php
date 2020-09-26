@@ -10,7 +10,7 @@
 
   }
 
-  function universitySearchResults() {
+  function universitySearchResults($data) {
     // return 'Congratulations, you created a route.';
     // return array('red', 'orange', 'yellow'); // PHP data automatically converted to JSON data
     // return array(
@@ -18,7 +18,9 @@
     //   'dog' => 'bark'
     // ); // PHP data automatically converted to JSON data
     $professors = new WP_Query(array(
-      'post_type' => 'professor'
+      'post_type' => 'professor',
+      // 's' => 'barksalot' // Search Argument
+      's' => sanitize_text_field($data['term'])
     ));
 
     // return $professors->posts;
