@@ -11,6 +11,28 @@
   }
 
   function universitySearchResults() {
-    return 'Congratulations, you created a route.';
+    // return 'Congratulations, you created a route.';
+    // return array('red', 'orange', 'yellow'); // PHP data automatically converted to JSON data
+    // return array(
+    //   'cat' => 'meow',
+    //   'dog' => 'bark'
+    // ); // PHP data automatically converted to JSON data
+    $professors = new WP_Query(array(
+      'post_type' => 'professor'
+    ));
+
+    // return $professors->posts;
+
+    $professorResults = array();
+
+    while($professors->have_posts()) {
+      $professors->the_post();
+      array_push($professorResults, array( // Build my own custom array that contains only the exact data that I want.
+        'title' => get_the_title(),
+        'permalink' => get_the_permalink()
+      ));
+    }
+
+    return $professorResults;
   }
 ?>
