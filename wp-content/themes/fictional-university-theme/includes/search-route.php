@@ -60,7 +60,7 @@
         );
       }
 
-      if (get_post_type() == 'programs') {
+      if (get_post_type() == 'program') {
         array_push(
           $results['programs'], 
           array(

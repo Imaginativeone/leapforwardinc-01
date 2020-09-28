@@ -70,6 +70,8 @@ class Search {
 
     $.getJSON($urlPostsString, (results) =>  {
 
+      console.log('results', results);
+
       // Coordinate with search-route.php
       // In the map() function, item.link > item.permalink, item.title.rendered > item.title
       // See while($mainQuery->have_posts())
@@ -92,7 +94,11 @@ class Search {
             </div>
             <div class="one-third">
               <h2 class="search-overlay__section-title">Programs</h2>
-
+              ${ results.programs.length ? '<ul class="link-list min-list">' : '<p>No general information matches that search.</p>' }
+              ${ results.programs.map(item => `<li><a href="${ item.permalink }">${ item.title }</a> 
+                ${ item.postType == 'post' ? `by ${ item.authorName }` : '' } 
+                </li>`).join('') }
+              ${ results.programs.length ? '</ul>' : '' } <!-- Conditional Closing UL -->
               <h2 class="search-overlay__section-title">Professors</h2>
 
             </div>
@@ -104,6 +110,7 @@ class Search {
           </div>
         `
       );
+      this.isSpinnerVisible = false;
     });
 
     // Delete this code a bit later on
