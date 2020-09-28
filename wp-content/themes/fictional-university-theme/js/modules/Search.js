@@ -95,15 +95,17 @@ class Search {
             <div class="one-third">
               <h2 class="search-overlay__section-title">Programs</h2>
               ${ results.programs.length ? '<ul class="link-list min-list">' : '<p>No general information matches that search.</p>' }
-              ${ results.programs.map(item => `<li><a href="${ item.permalink }">${ item.title }</a> 
-                ${ item.postType == 'post' ? `by ${ item.authorName }` : '' } 
-                </li>`).join('') }
+              ${ results.programs.map(item => `<li><a href="${ item.permalink }">${ item.title }</a></li>`) }
               ${ results.programs.length ? '</ul>' : '' } <!-- Conditional Closing UL -->
+
               <h2 class="search-overlay__section-title">Professors</h2>
 
             </div>
             <div class="one-third">
               <h2 class="search-overlay__section-title">Campuses</h2>
+              ${ results.campuses.length ? '<ul class="link-list min-list">' : '<p>No general information matches that search.</p>' }
+              ${ results.campuses.map(item => `<li><a href="${ item.permalink }">${ item.title }</a></li>`) }
+              ${ results.campuses.length ? '</ul>' : '' } <!-- Conditional Closing UL -->
               
               <h2 class="search-overlay__section-title">Events</h2>
             </div>
