@@ -61,6 +61,9 @@ class Search {
   // S14V66-Synchronous-vs-Asynchronous-Part-1,t=1:00:10:41
 
   getResults() {
+
+    // Delete this code a bit later on
+
     // this.resultsDiv.html("Imagine real search results here...");
     // this.isSpinnerVisible = false;
     // How can I use JavaScript to send out a request to a URL?
