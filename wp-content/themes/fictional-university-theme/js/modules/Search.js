@@ -62,6 +62,50 @@ class Search {
 
   getResults() {
 
+    console.log('URL', universityData.root_url + '/wp-json/university/v1/search?term=' + this.searchField.val());
+
+    // URL
+    const $urlPostsString = universityData.root_url + '/wp-json/university/v1/search?term=' + this.searchField.val();
+    // const $urlPagesString = 'https://leapforward01.local/wp-json/wp/v2/pages?search=' + this.searchField.val();
+
+    $.getJSON($urlPostsString, (results) =>  {
+
+      // Coordinate with search-route.php
+      // In the map() function, item.link > item.permalink, item.title.rendered > item.title
+      // See while($mainQuery->have_posts())
+      // array_push($results['generalInfo'], array(
+      //   'title' => get_the_title(),
+      //   'permalink' => get_the_permalink(),
+      //   'postType' => get_post_type() // New Property
+      // ));
+
+      this.resultsDiv.html(
+        `
+          <div class="row">
+            <div class="one-third">
+              <h2 class="search-overlay__section-title">General Information</h2>
+              ${ results.generalInfo.length ? '<ul class="link-list min-list">' : '<p>No general information matches that search.</p>' }
+              ${ results.generalInfo.map(item => `<li><a href="${ item.permalink }">${ item.title }</a> 
+                ${ item.postType == 'post' ? `by ${ item.authorName }` : '' } 
+                </li>`).join('') }
+              ${ results.generalInfo.length ? '</ul>' : '' } <!-- Conditional Closing UL -->
+            </div>
+            <div class="one-third">
+              <h2 class="search-overlay__section-title">Programs</h2>
+
+              <h2 class="search-overlay__section-title">Professors</h2>
+
+            </div>
+            <div class="one-third">
+              <h2 class="search-overlay__section-title">Campuses</h2>
+              
+              <h2 class="search-overlay__section-title">Events</h2>
+            </div>
+          </div>
+        `
+      );
+    });
+
     // Delete this code a bit later on
 
     // this.resultsDiv.html("Imagine real search results here...");
@@ -71,7 +115,7 @@ class Search {
 
     // See functions.php > wp_localize_script();
     // const $urlPostsString = universityData.root_url + '/wp-json/wp/v2/posts?search=' + this.searchField.val();
-    const $urlPostsString = 'https://leapforward01.local/wp-json/wp/v2/posts?search=' + this.searchField.val();
+    // const $urlPostsString = 'https://leapforward01.local/wp-json/wp/v2/posts?search=' + this.searchField.val();
     const $urlPagesString = 'https://leapforward01.local/wp-json/wp/v2/pages?search=' + this.searchField.val();
 
     // S14V66-Synchronous-vs-Asynchronous-Part-1,t=8:20:03:26
