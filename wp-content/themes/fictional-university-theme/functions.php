@@ -6,21 +6,10 @@
   require get_theme_file_path('/includes/inc-university-files.php');
   require get_theme_file_path('/includes/inc-university-features.php');
   require get_theme_file_path('/includes/inc-university-adjust-queries.php');
-  require get_theme_file_path('/includes/inc-page-banner.php'); // Current Development
+  require get_theme_file_path('/includes/inc-page-banner.php');
+  require get_theme_file_path('/includes/inc-maybe-redirect.php'); // Current Development
 
-  // Hello - A
-
-  function maybe_redirect() {
-    // if( current_user_can( 'manage_options' ) ) return;
-    // wp_redirect( home_url( '/profile' ), 302 );
-    // exit();
-    echo "This is a potential attempt to redirect. This is a potential attempt to redirect";
-    // wp_redirect( home_url( '/events' ), 302 );
-    // exit();
-  }
-
-  add_action( 'load-profile.php', 'maybe_redirect' );
-  // add_action( 'load-index.php',   'maybe_redirect' );
+  // Hello - B
 
   // Redirect subscriber accounts out of admin and onto homepage
   add_action('admin_init', 'redirectSubsToFrontEnd');
