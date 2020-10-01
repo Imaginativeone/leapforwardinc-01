@@ -7,32 +7,11 @@
   require get_theme_file_path('/includes/inc-university-features.php');
   require get_theme_file_path('/includes/inc-university-adjust-queries.php');
   require get_theme_file_path('/includes/inc-page-banner.php');
-  require get_theme_file_path('/includes/inc-maybe-redirect.php'); // Current Development
+  require get_theme_file_path('/includes/inc-maybe-redirect.php');
+  require get_theme_file_path('/includes/inc-redirect-subs-to-front-end.php'); 
+  require get_theme_file_path('/includes/inc-no-subs-admin-bar.php'); // Current Development
 
   // Hello - B
-
-  // Redirect subscriber accounts out of admin and onto homepage
-  add_action('admin_init', 'redirectSubsToFrontEnd');
-  
-  function redirectSubsToFrontEnd() {
-
-    $ourCurrentUser = wp_get_current_user();
-
-    if (count($ourCurrentUser->roles) == 1 AND $ourCurrentUser->roles[0] == 'subscriber') {
-      wp_redirect(site_url('/'));
-      exit();
-    }
-
-  }
-
-  add_action('wp_loaded', 'noSubsAdminBar');
-  
-  function noSubsAdminBar() {
-    $ourCurrentUser = wp_get_current_user();
-    if (count($ourCurrentUser->roles) == 1 AND $ourCurrentUser->roles[0] == 'subscriber') {
-      show_admin_bar(false);
-    }
-  }
 
   // Customize Login Screen
   add_filter('login_headerurl', 'ourHeaderUrl');
