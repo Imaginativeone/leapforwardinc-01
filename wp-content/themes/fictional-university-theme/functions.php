@@ -1,92 +1,14 @@
 <?php 
 
+  // JavaScript - Functions organized into their own files
   require get_theme_file_path('/includes/search-route.php');
   require get_theme_file_path('/includes/inc-university-custom-rest.php');
   require get_theme_file_path('/includes/inc-university-files.php');
-  require get_theme_file_path('/includes/inc-university-features.php'); // Current Development; Done
+  require get_theme_file_path('/includes/inc-university-features.php');
+  require get_theme_file_path('/includes/inc-university-adjust-queries.php');
+  require get_theme_file_path('/includes/inc-page-banner.php'); // Current Development
 
-  // Hello
-
-  function university_adjust_queries($query) {
-
-    if (!is_admin() AND is_post_type_archive('program') AND $query->is_main_query()) {
-      $query->set('posts_per_page', -1);
-      $query->set('orderby',  'title');
-      $query->set('order',    'ASC');
-    }
-
-    $today = date('Ymd');
-
-    if (!is_admin() AND is_post_type_archive('event') AND $query->is_main_query()) {
-      // $query->set('posts_per_page', '1');  // Pagination is still there
-                                              // Applied Universally to all Queries! Too Powerful
-      // $query->set('posts_per_page', '1');
-      $query->set('meta_key', 'event_date');
-      $query->set('orderby',  'meta_value_num');
-      $query->set('order',    'ASC');
-      $query->set('meta_query', 
-        array(
-          array(
-            'key' => 'event_date',
-            'compare' => '>=',
-            'value' => $today,
-            'type' => 'numeric'
-          )        
-        )
-      );
-    }
-  }
-
-  // See archive-event.php for info about Default Queries Adjustments
-  add_action('pre_get_posts', 'university_adjust_queries');
-
-  function pageBanner($args = NULL) {
-    // PHP Logic will live here
-    if (!$args['title']) {
-      $args['title'] = get_the_title();
-    }
-
-    if (!$args['subtitle']) {
-      $args['subtitle'] = get_field('page_banner_subtitle');
-    }
-
-    if (!$args['photo']) {
-      $args['photo'] = get_field('page_banner_background_image');
-    } else {
-      $args['photo'] = get_theme_file_uri('/images/ocean.jpg');
-    }
-    ?>
-    <!-- Beg Page Banner HTML -->
-    <div class="page-banner">
-        <!-- <div class="page-banner__bg-image" style="background-image: url(images/ocean.jpg);"></div> -->
-        <!-- <div class="page-banner__bg-image" 
-          style="background-image: url(<?php echo get_theme_file_uri('/images/ocean.jpg')?>);"></div> -->
-        <div class="page-banner__bg-image" 
-          style="background-image: url(
-            <?php echo $args['photo'];?>
-          );"></div>
-        <div class="page-banner__bg-image" 
-        style="background-image: url(
-          <?php 
-            $pageBannerImage = get_field('page_banner_background_image');
-            echo $pageBannerImage['url'];
-          ?>
-        );"></div>
-        <div class="page-banner__content container container--narrow">
-          <!-- <h1 class="page-banner__title">Our History</h1> -->
-          <h1 class="page-banner__title">
-            <!-- <?php the_title(); ?> -->
-            <?php echo $args['title']; ?>
-          </h1>
-          <div class="page-banner__intro">
-            <!-- <p>DON'T FORGET TO REPLACE ME LATER</p> -->
-            <p><?php echo $args['subtitle']; ?></p>
-          </div>
-        </div>  
-      </div>
-    <!-- End Page Banner HTML -->
-    <?php
-  }
+  // Hello - A
 
   function maybe_redirect() {
     // if( current_user_can( 'manage_options' ) ) return;
