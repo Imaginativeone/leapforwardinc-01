@@ -1,15 +1,24 @@
 <?php 
+
+  // $objCurrentUser = wp_get_current_user();
+  // $currentUser   = $objCurrentUser->user_login;
+  // $currentUserID = $objCurrentUser->ID;
+
   get_header(); 
+
+  // $modified_header_title = 'Author Page For: ' . $currentUser;
+
   pageBanner(
     array(
-      'title' => get_the_archive_title(),
-      'subtitle' => get_the_archive_description()
-    )
+      'title' => $modified_header_title,
+      // 'subtitle' => 'Hi, this is the subtitle',
+      'photo' => 'https://www.tvinsider.com/wp-content/uploads/2018/02/Station-19-Jaina-Lee-Ortiz-1014x570.jpg'
+  )
   );
   ?>
 
   <div class="container container--narrow page-section">
-  
+
   <?php 
     while(have_posts()) {
       the_post(); ?>
