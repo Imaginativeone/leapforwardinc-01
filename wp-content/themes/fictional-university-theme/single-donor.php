@@ -1,3 +1,6 @@
+<!-- Template Page for the "Events" Custom Post Type -->
+Template Page for the "Donor" Custom Post Type<br/>
+
 Single Donor Page<br/>
 
 <?php 

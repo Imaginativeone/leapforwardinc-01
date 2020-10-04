@@ -14,6 +14,6 @@
       'all_items' => 'All Students',
       'singular_name' => 'Student'
     ),
-    'menu_icon' => 'dashicons-calendar'
+    'menu_icon' => 'dashicons-welcome-learn-more'
   ));
 ?>
